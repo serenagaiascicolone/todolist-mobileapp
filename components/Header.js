@@ -1,4 +1,4 @@
-import { ImageBackground, Text, View} from "react-native"
+import { Image, ImageBackground, Text, View} from "react-native"
 import { StyleSheet } from "react-native"
 import {LinearGradient} from "expo-linear-gradient"
 
@@ -16,7 +16,8 @@ export default function Header ({useCaveat}) {
                     'rgba(191, 140, 111, 0.7)'
                 ]}>
         <View style={styles.header}>
-            <Text style={{fontFamily : 'Caveat_400Regular', fontSize: 40}}> Todo List </Text>
+            <Image source={require('../assets/img/logo.png')} style={styles.image}/>
+            {/* <Text style={{fontFamily : 'Caveat_400Regular', fontSize: 40}}> Todo List </Text> */}
         </View>
 
         </LinearGradient>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create ({
     header: {
         width: '100%',
         // backgroundColor: 'red',
-        height: 120,
+        height: 150,
         display: 'flex', 
         alignItems: 'center',
         justifyContent: 'center', 
@@ -39,4 +40,8 @@ const styles = StyleSheet.create ({
     backgroundImage: {
         backgroundColor: '#00000060',
     },
+    image: {
+        width: 200,
+        height: 150
+    }
 })

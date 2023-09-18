@@ -7,7 +7,7 @@ import HeaderMain from './components/HeaderMain';
 import Form from './components/Form';
 import FilterButtonList from './components/FilterButtonList';
 import TasksContainer from './components/TasksContainer';
-
+import Footer from './components/Footer';
 
 export default function App() {
   const [caveatLoaded, caveatError] = useCaveat({Caveat_400Regular})
@@ -22,8 +22,8 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Header useCaveat={useCaveat}/>
       <ScrollView style={styles.main}>
+      <Header useCaveat={useCaveat}/>
       <HeaderMain useRoboto={useRoboto} useCaveat={useCaveat} />
       <View style={styles.addAndFitlersTask}> 
       <Form useRoboto={useRoboto} useCaveat={useCaveat} />
@@ -32,6 +32,7 @@ export default function App() {
       <TasksContainer useRoboto={useRoboto} useCaveat={useCaveat} />
       </ScrollView>
       <StatusBar style="auto" />
+      <Footer useCaveat={useCaveat}/>
     </View>
   );
 }

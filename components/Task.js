@@ -22,7 +22,7 @@ let taskView = (
         <Ionicons name="close-circle-outline" style={styles.iconClose}/>
         </View>
 
-        <Text style={{fontFamily: 'Roboto_400Regular', fontWeight: 400, paddingVertical: 30, textAlign: 'center'}}> Dormire </Text>   
+        <Text style={{fontFamily: 'Roboto_400Regular', fontWeight: 400, paddingVertical: 30, textAlign: 'center', marginVertical: 25}}> Dormire </Text>   
         
         <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.button} onPress={() => setIsEditing(true)}>
@@ -43,7 +43,7 @@ let taskEdit = (
         </View>
         <View>
             {/* close */}
-        <Ionicons name="arrow-back-circle-outline" style={styles.iconClose}/>
+        <Ionicons name="arrow-back-circle-outline" style={styles.iconClose} onPress={() => setIsEditing(false)}/>
         </View>
 
         <TextInput 
@@ -51,9 +51,10 @@ let taskEdit = (
         multiline
         numberOfLines={5}
         maxLength={100}
-        style={{textAlign: 'center'}}
+        style={{textAlign: 'center', marginVertical: 25}}
         padding={10}
         defaultValue={'prova'}
+        
         />   
         
         <View style={styles.buttonsContainer}>
