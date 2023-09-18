@@ -1,4 +1,4 @@
-import { ImageBackground, Text, View, TextInput, TouchableOpacity } from "react-native"
+import { ImageBackground, Text, View, TextInput, TouchableOpacity, ScrollView, Dimensions } from "react-native"
 import { StyleSheet } from "react-native"
 import {useFonts as useRoboto, Roboto_400Regular } from "@expo-google-fonts/roboto"
 import {useFonts as useCaveat, Caveat_400Regular} from '@expo-google-fonts/caveat'
@@ -22,7 +22,7 @@ export default function Mock () {
  
     <>
     {/* header */}
-    <ImageBackground 
+    {/* <ImageBackground 
         style={styles.backgroundImage}
         source={require('../assets/img/pexels-cottonbro-studio-5190680.jpg')} 
         resizeMode={'cover'}>
@@ -37,12 +37,12 @@ export default function Mock () {
         </View>
 
         </LinearGradient>
-    </ImageBackground>
+    </ImageBackground> */}
 
     {/* Main */}
-    <View style={styles.main}>
+    {/* <ScrollView style={styles.main}> */}
        
-        <View >
+        {/* <View >
         <Text 
         style={{
         fontFamily: 'Roboto_400Regular', 
@@ -55,45 +55,45 @@ export default function Mock () {
         }}>
             I miei task
         </Text>
-        </View>
+        </View> */}
 
 
-       <View style={styles.addAndFitlersTask}>
+       {/* <View style={styles.addAndFitlersTask}> */}
         {/* form */}
-            <View style={styles.addTask}>
+            {/* <View style={styles.addTask}>
                 <TextInput 
                 placeholder="scrivi il tuo task"
                 style={styles.addTaskInput}
                 />
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16}}> Aggiungi</Text>
                 </TouchableOpacity>
 
-            </View>
+            </View> */}
 
             {/* filterButtonList */}
-            <View style={styles.filterContainer}>
+            {/* <View style={styles.filterContainer}>
                 <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold', textTransform: 'capitalize'}}> filtra: </Text>
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16}}> Tutti </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16}}> Rimasti </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16}}> Completati </Text>
                 </TouchableOpacity>
-            </View>
-       </View>
+            </View> */}
+       {/* </View> */}
   
         {/* TaskContainer  */}
-    <View>
+    {/* <View style={{flex:1}}> */}
             {/*TaskCounter*/}
-            <View style={styles.counterContainer}>
+            {/* <View style={styles.counterContainer}>
                 <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold'}}> 1 task in questa lista </Text>
-            </View>
+            </View> */}
 
-        <View style={styles.tasksContainer}>  
+        {/* <View style={styles.tasksContainer}>   */}
 
 
             <View style={styles.taskContainer}>
@@ -106,10 +106,10 @@ export default function Mock () {
                 <Ionicons name="close-circle-outline" style={styles.iconClose}/>
                 </View>
 
-                <Text style={{fontFamily: 'Roboto_400Regular', fontWeight: 400, paddingVertical: 30, textAlign: 'center'}}> Cenare </Text>   
+                <Text style={{fontFamily: 'Roboto_400Regular', fontWeight: 400, paddingVertical: 30, textAlign: 'center'}}> Dormire </Text>   
                 
                 <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16, textAlign: 'center'}}> Modifica </Text>
                 </TouchableOpacity>
                 </View>
@@ -123,27 +123,36 @@ export default function Mock () {
                 </View>
                 <View>
                     {/* close */}
-                <Ionicons name="close-circle-outline" style={styles.iconClose}/>
+                <Ionicons name="arrow-back-circle-outline" style={styles.iconClose}/>
                 </View>
 
-                <Text style={{fontFamily: 'Roboto_400Regular', fontWeight: 400, paddingVertical: 30, textAlign: 'center'}}> Cenare </Text>   
+                <TextInput 
+                editable
+                multiline
+                numberOfLines={5}
+                maxLength={100}
+                style={{textAlign: 'center'}}
+                padding={10}
+                defaultValue={'prova'}
+                />   
                 
                 <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.addButton} >
+                <TouchableOpacity style={styles.button} >
                     <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16, textAlign: 'center'}}> Modifica </Text>
                 </TouchableOpacity>
                 </View>
 
             </View>
 
-        </View>
+        {/* </View> */}
 
-    </View>
-    </View>
+    {/* </View> */}
+    {/* </ScrollView> */}
     
     </>
     )
 }
+
 
 const styles = StyleSheet.create ({
     // header
@@ -167,9 +176,9 @@ const styles = StyleSheet.create ({
     main: {
         display: 'flex',
         backgroundColor: 'rgb(141, 187, 200)',
-        width: '100%',
-        height: '100%',
-        // overflow: 'visible',
+        flex: 1,
+        // height: screenHeight,
+        
     }, 
     headerMain : {
         textAlign: 'center'
@@ -191,7 +200,7 @@ const styles = StyleSheet.create ({
     addTaskInput: {
         flex: 1,
     },
-    addButton: {
+    button: {
         borderRadius: 50,
         backgroundColor: '#bf8c6f',
         fontFamily: 'Caveat_400Regular',
@@ -204,17 +213,20 @@ const styles = StyleSheet.create ({
         gap: 10,
         alignItems: 'center'
     }, 
+
     tasksContainer : {
         display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 16,
+        // flexDirection: 'row',
+        // flexWrap: 'wrap',
         padding: 5,
-        justifyContent: 'center',
         // height: '100%',
-        overflow: 'scroll',
+        alignItems: 'center',
+        gap: 16,
+        // flex: 1,
+        flexGrow: 1,
+        
     },
-
+  
     counterContainer:{
         textAlign: 'start',
         paddingVertical: 16,
@@ -222,13 +234,13 @@ const styles = StyleSheet.create ({
     },
 
     taskContainer : {
-        width: '50%',
+        width: '60%',
         display: 'flex',
         gap: 1,
         padding: 30,
         // justifyContent: 'center',
         backgroundColor: '#ebedf2cc',
-        position: 'relative',
+        // position: 'relative',
     },
     iconFlag: {
         fontSize: 20,
