@@ -4,10 +4,15 @@ import { selectTask } from "../features/taskSlice"
 import { useSelector } from "react-redux"
 import TaskCounter from "./TaskCounter"
 import Task from "./Task"
+import {selectedFilter} from "../features/filterSlice"
+
 
 export default function TasksContainer ({useCaveat, useRoboto}) {
 
 const tasks = useSelector(selectTask)
+const filters = useSelector(selectedFilter)
+const taskList = tasks.filter(filters)
+
 
 let TaskList = ({task}) => {
     return (
@@ -20,11 +25,11 @@ let TaskList = ({task}) => {
 }   
     return (
         <View style={styles.tasksContainer}>  
-            <TaskCounter useRoboto={useRoboto} taskNumber={tasks.length}/>
+            <TaskCounter useRoboto={useRoboto} taskNumber={taskList.length}/>
             <FlatList
             style={styles.flatListTask}
             contentContainerStyle={{flexGrow: 1, gap: 16, alignItems: 'center'}} 
-            data={tasks}
+            data={taskList}
             renderItem={({item}) => <TaskList task={item}/>}
             keyExtractor={item => item.id}
             />

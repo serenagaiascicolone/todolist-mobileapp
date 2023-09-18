@@ -7,7 +7,6 @@ const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 const initialState = {
     tasks: [],
     status: 'init',
-    filter: 'tutti'
 }
 export const taskSlice = createSlice({
     name: 'task',

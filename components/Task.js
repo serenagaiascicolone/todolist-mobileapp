@@ -4,12 +4,15 @@ import { StyleSheet } from "react-native"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { deleteTask, editingTask, toggleTask } from "../features/taskSlice";
 import { useDispatch } from "react-redux";
+import { useEffect, useRef } from "react";
+
 
 export default function Task ({useCaveat, useRoboto, task}) {
 
 // switch mode task: edit/task 
 const [isEditing, setIsEditing] = useState(false)
 const [taskEdited, setTaskEdited] = useState(task.name)
+const editInputRef = useRef(null)
 let dispatch = useDispatch()
 
 // cancella task 
@@ -28,6 +31,13 @@ function handleToggleTask () {
     dispatch(toggleTask(task.id))
 
 }
+
+// focus su textarea quando clicchiamo su modifica 
+useEffect(() => {
+    if(isEditing) {
+    editInputRef.current.focus()
+    }
+},[isEditing])
 
 let taskView = (
 
@@ -70,11 +80,12 @@ let taskEdit = (
         </View>
 
         <TextInput 
+        ref={editInputRef}
         editable
         multiline
         numberOfLines={5}
         maxLength={100}
-        style={{paddingVertical: 0, textAlign: 'center', marginTop: 32,}}
+        style={{paddingVertical: 0, textAlign: 'center', marginTop: 32, color:'#A64444'}}
         padding={10}
         value={taskEdited}
         onChangeText={(text) => setTaskEdited(text)}

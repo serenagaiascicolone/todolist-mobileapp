@@ -1,13 +1,24 @@
 import { Text, View } from "react-native"
 import { StyleSheet } from "react-native"
-
+import { filters } from "../features/filterSlice"
 import FilterButton from "./FilterButton"
 
 export default function FilterButtonList ({useRoboto, useCaveat}) {
+
+let Button = Object.keys(filters).map(name => (
+    <FilterButton 
+    useRoboto={useRoboto} 
+    useCaveat={useCaveat}
+    key = {name}
+    name = {name}
+    />
+
+))
+
     return (
         <View style={styles.filterContainer}>
         <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold', textTransform: 'capitalize'}}> filtra: </Text>
-        <FilterButton useRoboto={useRoboto} useCaveat={useCaveat}/>
+        {Button}
     </View>
     )
 }

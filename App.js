@@ -10,6 +10,7 @@ import TasksContainer from './components/TasksContainer';
 import Footer from './components/Footer';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+
 export default function App() {
   const [caveatLoaded, caveatError] = useCaveat({Caveat_400Regular})
   const [RobotoLoaded, RobotoError] = useRoboto({Roboto_400Regular})
