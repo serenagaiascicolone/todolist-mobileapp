@@ -8,7 +8,8 @@ import Form from './components/Form';
 import FilterButtonList from './components/FilterButtonList';
 import TasksContainer from './components/TasksContainer';
 import Footer from './components/Footer';
-
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 export default function App() {
   const [caveatLoaded, caveatError] = useCaveat({Caveat_400Regular})
   const [RobotoLoaded, RobotoError] = useRoboto({Roboto_400Regular})
@@ -21,6 +22,7 @@ export default function App() {
       return null
   }
   return (
+    <Provider store={store}>
     <View style={styles.container}>
       <ScrollView style={styles.main}>
       <Header useCaveat={useCaveat}/>
@@ -30,10 +32,11 @@ export default function App() {
       <FilterButtonList useRoboto={useRoboto} useCaveat={useCaveat} /> 
       </View>
       <TasksContainer useRoboto={useRoboto} useCaveat={useCaveat} />
+      <Footer useCaveat={useCaveat}/>
       </ScrollView>
       <StatusBar style="auto" />
-      <Footer useCaveat={useCaveat}/>
     </View>
+    </Provider>
   );
 }
 

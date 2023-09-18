@@ -1,15 +1,28 @@
 import { Text, View, TextInput, TouchableOpacity} from "react-native"
 import { StyleSheet } from "react-native"
-
+import { addNewTask } from "../features/taskSlice"
+import { useDispatch } from "react-redux"
+import { useState } from "react"
 
 export default function Form ({useRoboto, useCaveat}) {
+
+const [newTask, setNewTask] = useState()
+const dispatch = useDispatch()
+    
+function handleAddTask () {
+    dispatch(addNewTask(newTask))
+    setNewTask('')
+}
+
     return (
         <View style={styles.addTask}>
         <TextInput 
         placeholder="scrivi il tuo task"
         style={styles.addTaskInput}
+        onChangeText={(text) => setNewTask(text)}
+        value={newTask}
         />
-        <TouchableOpacity style={styles.button} >
+        <TouchableOpacity style={styles.button} onPress={handleAddTask}>
             <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16}}> Aggiungi</Text>
         </TouchableOpacity>
 
