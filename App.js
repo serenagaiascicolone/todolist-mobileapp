@@ -7,6 +7,7 @@ import { persistStore } from 'redux-persist';
 import Mock from './components/Mock'
 
 import TodoListApp from './components/TodoListApp';
+import LoaderSpinner from './components/LoaderSpinner';
 
 export default function App() {
  
@@ -16,7 +17,7 @@ export default function App() {
     <PersistGate loading={null} persistor ={persistore}>
     <View style={styles.container}>
       <TodoListApp />
-      {/* <Mock /> */}
+      {/* <LoaderSpinner /> */}
       <StatusBar 
       // backgroundColor='green'
     

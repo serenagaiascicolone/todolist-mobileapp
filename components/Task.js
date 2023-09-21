@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Text, View, TextInput, TouchableOpacity } from "react-native"
+import {Text, View, TextInput, TouchableOpacity, Pressable } from "react-native"
 import { StyleSheet } from "react-native"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { deleteTask, editingTask, toggleTask } from "../features/taskSlice";
@@ -13,6 +13,7 @@ export default function Task ({useCaveat, useRoboto, task}) {
 const [isEditing, setIsEditing] = useState(false)
 const [taskEdited, setTaskEdited] = useState(task.name)
 const editInputRef = useRef(null)
+// const [isActive, setIsActive] = useState(false)
 let dispatch = useDispatch()
 
 // cancella task 
@@ -58,9 +59,11 @@ let taskView = (
         {task.name} </Text>   
         
         <View style={styles.buttonsContainer}>
+        
         <TouchableOpacity style={styles.button} onPress={() => setIsEditing(true)}>
             <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16, textAlign: 'center'}}> Modifica </Text>
         </TouchableOpacity>
+       
         </View>
 
 
@@ -94,7 +97,7 @@ let taskEdit = (
         />   
         
         <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleEditingTask}>
+        <TouchableOpacity style={styles.button} onPress={handleEditingTask} >
             <Text style={{fontFamily: 'Caveat_400Regular', fontSize: 16, textAlign: 'center'}}> Salva </Text>
         </TouchableOpacity>
         </View>
@@ -133,7 +136,10 @@ const styles = StyleSheet.create ({
         position: 'absolute',
         left: 0,
         right: 0,
-        // margin: 16,
+        // backgroundColor: 'yellow',
+        // width: 30,
+        // borderRadius: 50,
+       
     },
     iconCloseAndBack: {
         fontSize: 30,

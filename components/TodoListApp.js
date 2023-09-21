@@ -17,57 +17,44 @@ import { useEffect, useState } from 'react';
 
 
 export default function TodoListApp () {
-    //  MEMORIZZO TASKS IN ASYNC STORAGE
-  const tassks = useSelector(selectTask)
+    // initial page app
+        const [isLoading, setIsLoading] = useState(true)
+        useEffect(() => {
+            const loadingPage = setTimeout(() =>{
+                setIsLoading(false)
+            },5000)
+            return () => clearTimeout(loadingPage)
+        },[])
 
-//   const setData = async () => {
-//     try {
-//       await AsyncStorage.setItem('@tasks', JSON.stringify(tasks));
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-//   useEffect(() =>{
-//     setData()
-//   },[tasks])
+// google fonts
+const [caveatLoaded, caveatError] = useCaveat({Caveat_400Regular})
+const [RobotoLoaded, RobotoError] = useRoboto({Roboto_400Regular})
 
-//   useEsffect(() =>{
-//     getData(tasks)
-//   },[tasks])
+if(!caveatLoaded && !caveatError){
+    return null
+}
 
-    const [caveatLoaded, caveatError] = useCaveat({Caveat_400Regular})
-    const [RobotoLoaded, RobotoError] = useRoboto({Roboto_400Regular})
+if(!RobotoLoaded && !RobotoError){
+    return null
+}
+
+// width and height 100vh/wv
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
+
+
     
-    const width = Dimensions.get('window').width;
-    const height = Dimensions.get('window').height;
-
-    const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
-        const loadingPage = setTimeout(() =>{
-            setIsLoading(false)
-        },5000)
-        return () => clearTimeout(loadingPage)
-    },[])
-
-    if(!caveatLoaded && !caveatError){
-        return null
-    }
-  
-    if(!RobotoLoaded && !RobotoError){
-        return null
-    }
-
     return (
         <>
-        {isLoading && <LoaderSpinner />}
+        {isLoading && <LoaderSpinner/>}
         <ScrollView style={[{width: width, height: height}, styles.main]}>
-        <Header useCaveat={useCaveat}/>
-        <HeaderMain useRoboto={useRoboto} useCaveat={useCaveat} />
+        <Header />
+        <HeaderMain />
         <View style={styles.addAndFitlersTask}> 
-        <Form useRoboto={useRoboto} useCaveat={useCaveat} />
-        <FilterButtonList useRoboto={useRoboto} useCaveat={useCaveat} /> 
+        <Form />
+        <FilterButtonList /> 
         </View>
-        <TasksContainer useRoboto={useRoboto} useCaveat={useCaveat} />
+        <TasksContainer />
         {/* <Footer useCaveat={useCaveat}/> */}
         </ScrollView>
         </>

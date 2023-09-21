@@ -1,55 +1,40 @@
 import { StyleSheet, View, Image, Text, Animated, Easing } from 'react-native'
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect} from 'react';
 
-export default function LoaderSpinner () {
+export default function LoaderSpinner ({useRoboto}) {
 
     // opacity container
-    // const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
+
     const fadeAnim = new Animated.Value(0)// Initial value for opacity: 0
-
-    // useEffect(() => {
-    //   Animated.timing(fadeAnim, {
-    //     toValue: 1,
-    //     duration: 2000,
-    //     useNativeDriver: true,
-    //   }).start();
-    // }, [fadeAnim]);
-
-
-
-
-    // rotate image
-    const rotateValue = new Animated.Value(0)
-
-    const spin = () => { // funzione per creare il loop
-        rotateValue.setValue(0) 
-
-        Animated.timing(rotateValue, fadeAnim, {// configurazione rotateValue: change Value(0)
+    
+    useEffect(() => { 
+        Animated.timing(fadeAnim, {// configurazione rotateValue: change Value(0)
             toValue: 1,
-            duration: 5000,
+            duration: 1000,
             easing: Easing.linear, // type of animation
             useNativeDriver: true,
-        }).start(() => spin())
-    }
-    useEffect(() => { 
-        spin() 
-    },[])
+        }).start()
+    },[fadeAnim])
+    
+    // animated image
+    const widhtImageValue = new Animated.Value(0)
+    Animated.timing(widhtImageValue, {
+        toValue: 150, 
+        duration: 3000, 
+        useNativeDriver: false,
+    }).start()
+    
 
-    const rotateAnim = rotateValue.interpolate({ // configurazione
-        inputRange: [0, 1,],
-        outputRange: ['0deg', '360deg']
-    })
 
- 
     return (
             <Animated.View style={{opacity: fadeAnim}}>
         <View style={[{width: '100%', height: '100%'}, styles.loadingContainer]}>
 
             <Animated.Image style={{
-                width: 150,
-                height: 100, 
-                transform: [{rotate: rotateAnim}]}}
+                height: 100,          
+                width: widhtImageValue,     
+            }}
                 source={require('../assets/img/logo.png')}/>
 
              <Text style={styles.loadingText}>© Serena Gaia Scicolone </Text>
@@ -75,6 +60,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         padding: 16,
+        fontFamily: 'Roboto_400Regular',
     }
     
 })
