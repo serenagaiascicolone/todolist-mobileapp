@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native"
 export default function TaskCounter ({useRoboto, taskNumber}) {
     return (
     <View style={styles.counterContainer}>
-        <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold'}}> {taskNumber} task in questa lista </Text>
+        <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold'}}> {taskNumber} task{taskNumber > 1 ? 's' : '' } in questa lista </Text>
     </View>
     )
 

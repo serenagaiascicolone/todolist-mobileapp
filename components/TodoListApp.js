@@ -1,5 +1,5 @@
 
-import { StyleSheet, View, ScrollView, Dimensions, DrawerLayoutAndroidComponent } from 'react-native';
+import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 import {useFonts as useRoboto, Roboto_400Regular } from "@expo-google-fonts/roboto"
 import {useFonts as useCaveat, Caveat_400Regular} from '@expo-google-fonts/caveat'
 import Header from './Header';
@@ -9,17 +9,16 @@ import FilterButtonList from './FilterButtonList';
 import TasksContainer from './TasksContainer';
 import { useSelector } from 'react-redux';
 import { selectTask } from '../features/taskSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import LoaderSpinner from './LoaderSpinner';
+
 import { useEffect, useState } from 'react';
-import { storage } from '../features/taskSlice';
-import { useDispatch } from 'react-redux';
-import { getData } from '../features/taskSlice';
+
 
 
 
 export default function TodoListApp () {
     //  MEMORIZZO TASKS IN ASYNC STORAGE
-  const tasks = useSelector(selectTask)
+  const tassks = useSelector(selectTask)
 
 //   const setData = async () => {
 //     try {
@@ -32,7 +31,7 @@ export default function TodoListApp () {
 //     setData()
 //   },[tasks])
 
-//   useEffect(() =>{
+//   useEsffect(() =>{
 //     getData(tasks)
 //   },[tasks])
 
@@ -41,6 +40,14 @@ export default function TodoListApp () {
     
     const width = Dimensions.get('window').width;
     const height = Dimensions.get('window').height;
+
+    const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        const loadingPage = setTimeout(() =>{
+            setIsLoading(false)
+        },5000)
+        return () => clearTimeout(loadingPage)
+    },[])
 
     if(!caveatLoaded && !caveatError){
         return null
@@ -51,6 +58,8 @@ export default function TodoListApp () {
     }
 
     return (
+        <>
+        {isLoading && <LoaderSpinner />}
         <ScrollView style={[{width: width, height: height}, styles.main]}>
         <Header useCaveat={useCaveat}/>
         <HeaderMain useRoboto={useRoboto} useCaveat={useCaveat} />
@@ -61,6 +70,7 @@ export default function TodoListApp () {
         <TasksContainer useRoboto={useRoboto} useCaveat={useCaveat} />
         {/* <Footer useCaveat={useCaveat}/> */}
         </ScrollView>
+        </>
     )
 }
 

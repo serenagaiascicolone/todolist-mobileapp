@@ -15,7 +15,7 @@ export default function HeaderMain ({useRoboto, useCaveat}) {
         padding: 20,
         backgroundColor: '#A64444',
         }}>
-            I miei task
+            I miei tasks
         </Text>
         </View>
     )

@@ -21,12 +21,5 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 export const store = configureStore ({
     reducer: persistedReducer, 
     middleware: [thunk]
-    // task: taskReducer,
-    // filter: filterReducer
-//     reducer: {
-//         task: taskReducer, 
-//         filter: filterReducer, 
-      
-//     }
 })
 

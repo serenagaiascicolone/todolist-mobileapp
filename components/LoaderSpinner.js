@@ -2,27 +2,32 @@ import { StyleSheet, View, Image, Text, Animated, Easing } from 'react-native'
 
 import { useRef, useEffect, useState } from 'react';
 
-export default function Mock () {
+export default function LoaderSpinner () {
 
     // opacity container
-    const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
+    // const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
+    const fadeAnim = new Animated.Value(0)// Initial value for opacity: 0
 
-    useEffect(() => {
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 2000,
-        useNativeDriver: true,
-      }).start();
-    }, [fadeAnim]);
+    // useEffect(() => {
+    //   Animated.timing(fadeAnim, {
+    //     toValue: 1,
+    //     duration: 2000,
+    //     useNativeDriver: true,
+    //   }).start();
+    // }, [fadeAnim]);
+
+
+
 
     // rotate image
     const rotateValue = new Animated.Value(0)
 
     const spin = () => { // funzione per creare il loop
-        rotateValue.setValue(0)   
-        Animated.timing(rotateValue, {// configurazione rotateValue: change Value(0)
+        rotateValue.setValue(0) 
+
+        Animated.timing(rotateValue, fadeAnim, {// configurazione rotateValue: change Value(0)
             toValue: 1,
-            duration: 2000,
+            duration: 5000,
             easing: Easing.linear, // type of animation
             useNativeDriver: true,
         }).start(() => spin())

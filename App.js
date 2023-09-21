@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {store} from './store/store'
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistStore } from 'redux-persist';
+import Mock from './components/Mock'
 
 import TodoListApp from './components/TodoListApp';
 
@@ -15,6 +16,7 @@ export default function App() {
     <PersistGate loading={null} persistor ={persistore}>
     <View style={styles.container}>
       <TodoListApp />
+      {/* <Mock /> */}
       <StatusBar 
       // backgroundColor='green'
     
@@ -34,5 +36,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     // alignSelf: 'stretch'
   },
-
+  image: {
+    width: 150,
+    height: 100, 
+    // alignSelf: 'center'   
+}
 });

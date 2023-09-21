@@ -38,6 +38,7 @@ const styles = StyleSheet.create ({
         width: '100%',
         flex: 1,
         gap: 16,
+        marginBottom: 30,
    
     },
     flatListTask: {

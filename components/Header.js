@@ -12,6 +12,7 @@ export default function Header ({useCaveat}) {
         resizeMode={'cover'}>
 
             <LinearGradient 
+                style={styles.gradientLinear}
                 colors={[
                     'rgba(191, 140, 111, 0.7)',
                     'rgba(191, 140, 111, 0.7)'
@@ -40,10 +41,17 @@ const styles = StyleSheet.create ({
     backgroundImage: {
         backgroundColor: '#00000060',
         width: '100%',
+        height: '100%',
+    },
+    gradientLinear: {
+        height: '100%', 
+        display: 'flex', 
+        justifyContent: 'center'
     },
     image: {
-        width: 200,
-        height: 150, 
+        width: 150,
+        height: 100, 
         alignSelf: 'center'
+        
     }
 })
