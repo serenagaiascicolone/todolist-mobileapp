@@ -5,6 +5,7 @@ import {LinearGradient} from "expo-linear-gradient"
 
 export default function Header ({useCaveat}) {
     return (
+        <View style={styles.header}>
         <ImageBackground 
         style={styles.backgroundImage}
         source={require('../assets/img/pexels-cottonbro-studio-5190680.jpg')} 
@@ -15,13 +16,12 @@ export default function Header ({useCaveat}) {
                     'rgba(191, 140, 111, 0.7)',
                     'rgba(191, 140, 111, 0.7)'
                 ]}>
-        <View style={styles.header}>
             <Image source={require('../assets/img/logo.png')} style={styles.image}/>
             {/* <Text style={{fontFamily : 'Caveat_400Regular', fontSize: 40}}> Todo List </Text> */}
-        </View>
-
         </LinearGradient>
     </ImageBackground>
+        </View>
+
     )
 }
 
@@ -39,9 +39,11 @@ const styles = StyleSheet.create ({
     },
     backgroundImage: {
         backgroundColor: '#00000060',
+        width: '100%',
     },
     image: {
         width: 200,
-        height: 150
+        height: 150, 
+        alignSelf: 'center'
     }
 })

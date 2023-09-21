@@ -13,26 +13,19 @@ const tasks = useSelector(selectTask)
 const filters = useSelector(selectedFilter)
 const taskList = tasks.filter(filters)
 
-
-let TaskList = ({task}) => {
-    return (
-        <Task 
-        useRoboto={useRoboto} 
-        useCaveat={useCaveat}
-        task={task}
-        />
-    )
-}   
+ 
     return (
         <View style={styles.tasksContainer}>  
             <TaskCounter useRoboto={useRoboto} taskNumber={taskList.length}/>
-            <FlatList
-            style={styles.flatListTask}
-            contentContainerStyle={{flexGrow: 1, gap: 16, alignItems: 'center'}} 
-            data={taskList}
-            renderItem={({item}) => <TaskList task={item}/>}
-            keyExtractor={item => item.id}
-            />
+            {taskList.map(task => (
+                <Task  
+                useRoboto={useRoboto} 
+                useCaveat={useCaveat}
+                task={task} 
+                key={task.id}
+                />
+            ))}
+          
         </View>
     )
 }

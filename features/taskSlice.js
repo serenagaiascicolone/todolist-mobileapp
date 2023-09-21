@@ -1,17 +1,21 @@
 import {createSlice} from '@reduxjs/toolkit'
-// import {AsyncStorage} from 'react-native';
 // import { nanoid } from 'nanoid';
 import { customAlphabet } from 'nanoid/non-secure'; 
+
+
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10); 
 
-const initialState = {
-    tasks: [],
+
+let initialState = {
+    tasks: [], 
     status: 'init',
+    whitelist: ['tasks']
 }
+
 export const taskSlice = createSlice({
     name: 'task',
     initialState,
-    reducers: {
+    reducers: { 
         addNewTask: (state, action) => {
             state.status = 'added';
             const newTask ={
@@ -21,6 +25,9 @@ export const taskSlice = createSlice({
             }
             state.tasks.push(newTask)
         },
+        // storage: (state, action) => {
+        //     state.tasks = action.payload
+        // },
         deleteTask: (state, action) => {
             state.status = 'delete';
             state.tasks = state.tasks.filter(task => task.id !== action.payload)
@@ -37,9 +44,9 @@ export const taskSlice = createSlice({
         }, 
     }
 })
-
-export const {addNewTask, deleteTask, toggleTask, editingTask} = taskSlice.actions
+export const {addNewTask, deleteTask, toggleTask, editingTask } = taskSlice.actions
 
 export const selectTask = (state) => state.task.tasks;
+
 
 export default taskSlice.reducer 
