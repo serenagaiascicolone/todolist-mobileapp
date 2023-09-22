@@ -7,7 +7,9 @@ import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
 
 
-export default function Task ({useCaveat, useRoboto, task}) {
+export default function Task ({useCaveat, useRoboto, task, index}) {
+
+const alterningTaskColor = ['#F2BF5E', '#EBC6BE', '#4F736F','#E5DAE0']
 
 // switch mode task: edit/task 
 const [isEditing, setIsEditing] = useState(false)
@@ -105,7 +107,9 @@ let taskEdit = (
 )
     
 return (
-    <View style={styles.taskContainer}>
+    <View style={styles.taskContainer} 
+    backgroundColor={alterningTaskColor[index % alterningTaskColor.length]}
+    >
         {isEditing ? taskEdit : taskView}
     </View>
 )
@@ -127,7 +131,7 @@ const styles = StyleSheet.create ({
         display: 'flex',
         // gap: 1,
         padding: 32,
-        backgroundColor: '#ebedf2cc',
+        // backgroundColor: '#ebedf2cc',
        
     },
     iconFlagAndBack: {

@@ -17,12 +17,13 @@ const taskList = tasks.filter(filters)
     return (
         <View style={styles.tasksContainer}>  
             <TaskCounter useRoboto={useRoboto} taskNumber={taskList.length}/>
-            {taskList.map(task => (
+            {taskList.map((task, index) => (
                 <Task  
                 useRoboto={useRoboto} 
                 useCaveat={useCaveat}
                 task={task} 
                 key={task.id}
+                index={index}
                 />
             ))}
           
