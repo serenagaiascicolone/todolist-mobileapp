@@ -1,9 +1,9 @@
-import { StyleSheet, View, Image, Text, Animated, Easing } from 'react-native'
+import { StyleSheet, View, Image, Text, Animated, Easing, Dimensions } from 'react-native'
 
 import { useEffect} from 'react';
 
 export default function LoaderSpinner ({useRoboto}) {
-
+    const width = Dimensions.get('window').width;
     // opacity container
 
     const fadeAnim = new Animated.Value(0)// Initial value for opacity: 0
@@ -29,7 +29,7 @@ export default function LoaderSpinner ({useRoboto}) {
 
     return (
             <Animated.View style={{opacity: fadeAnim}}>
-        <View style={[{width: '100%', height: '100%'}, styles.loadingContainer]}>
+        <View style={[{width: width, height: '100%'}, styles.loadingContainer]}>
 
             <Animated.Image style={{
                 height: 100,          

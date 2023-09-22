@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Text, View, TextInput, TouchableOpacity, Pressable } from "react-native"
+import {Text, View, TextInput, TouchableOpacity, Pressable, Platform } from "react-native"
 import { StyleSheet } from "react-native"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { deleteTask, editingTask, toggleTask } from "../features/taskSlice";
@@ -90,7 +90,10 @@ let taskEdit = (
         multiline
         numberOfLines={5}
         maxLength={100}
-        style={{paddingVertical: 0, textAlign: 'center', marginTop: 32, color:'#A64444'}}
+        style={{paddingVertical: 0, textAlign: 'center', 
+        marginTop: Platform.OS === 'ios' ? 40 : 32, 
+        marginBottom: Platform.OS === 'ios' ? 40 : 0,  
+        color:'#A64444'}} 
         padding={10}
         value={taskEdited}
         onChangeText={(text) => setTaskEdited(text)}

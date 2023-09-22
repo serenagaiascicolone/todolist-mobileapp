@@ -17,7 +17,8 @@ let Button = Object.keys(filters).map(name => (
 
     return (
         <View style={styles.filterContainer}>
-        <Text style={{fontFamily: 'Roboto_400Regular', fontSize: 16, fontWeight: 'bold', textTransform: 'capitalize'}}> filtra: </Text>
+        <Text style={{fontFamily: Platform.OS === 'ios' ? 'Arial' : 'Roboto_400Regular',
+         fontSize: 16, fontWeight: 'bold', textTransform: 'capitalize'}}> filtra: </Text>
         {Button}
     </View>
     )
@@ -28,6 +29,8 @@ const styles = StyleSheet.create ({
         display: 'flex',
         flexDirection: 'row',
         gap: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+    
+      
     }, 
 })

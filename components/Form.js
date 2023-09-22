@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity} from "react-native"
+import { Text, View, TextInput, TouchableOpacity, Platform} from "react-native"
 import { StyleSheet } from "react-native"
 import { addNewTask } from "../features/taskSlice"
 import { useDispatch } from "react-redux"
@@ -34,6 +34,7 @@ const styles = StyleSheet.create ({
     addTask: {
         display: 'flex',
         flexDirection: 'row',
+        alignContent: 'center',
         gap: 10,
     },
     addTaskInput: {

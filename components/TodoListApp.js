@@ -1,5 +1,5 @@
 
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions} from 'react-native';
 import {useFonts as useRoboto, Roboto_400Regular } from "@expo-google-fonts/roboto"
 import {useFonts as useCaveat, Caveat_400Regular} from '@expo-google-fonts/caveat'
 import Header from './Header';
@@ -7,10 +7,8 @@ import HeaderMain from './HeaderMain';
 import Form from './Form';
 import FilterButtonList from './FilterButtonList';
 import TasksContainer from './TasksContainer';
-import { useSelector } from 'react-redux';
-import { selectTask } from '../features/taskSlice';
 import LoaderSpinner from './LoaderSpinner';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useEffect, useState } from 'react';
 
 
@@ -47,7 +45,8 @@ const height = Dimensions.get('window').height;
     return (
         <>
         {isLoading && <LoaderSpinner/>}
-        <ScrollView style={[{width: width, height: height}, styles.main]}>
+        <KeyboardAwareScrollView  keyboardShouldPersistTaps={'always'} 
+        style={[{width: width, height: height}, styles.main]} >
         <Header />
         <HeaderMain />
         <View style={styles.addAndFitlersTask}> 
@@ -55,8 +54,10 @@ const height = Dimensions.get('window').height;
         <FilterButtonList /> 
         </View>
         <TasksContainer />
+        </KeyboardAwareScrollView>
+        {/* <ScrollView > */}
         {/* <Footer useCaveat={useCaveat}/> */}
-        </ScrollView>
+        {/* </ScrollView> */}
         </>
     )
 }

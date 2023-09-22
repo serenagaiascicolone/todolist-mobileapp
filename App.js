@@ -4,10 +4,9 @@ import { Provider } from 'react-redux';
 import {store} from './store/store'
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistStore } from 'redux-persist';
-import Mock from './components/Mock'
-
 import TodoListApp from './components/TodoListApp';
 import LoaderSpinner from './components/LoaderSpinner';
+import { Platform } from 'react-native';
 
 export default function App() {
  
@@ -34,7 +33,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '',
     alignItems: 'start',
-    marginTop: 30,
+    ...Platform.select({
+      ios : {
+        marginTop: 32,
+      },
+      android: {
+        marginTop: 30,
+      }
+    })
     // alignSelf: 'stretch'
   },
   image: {
