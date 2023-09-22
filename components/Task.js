@@ -44,12 +44,15 @@ let taskView = (
 
         <>    
         <View>
-            {/* fleg */}
-        <Ionicons name="checkmark-circle-outline" style={styles.iconFlag} onPress={handleToggleTask}/>
+        {task.completed ?
+        <Ionicons name="checkmark-circle-sharp" style={styles.iconFlagAndBack} onPress={handleToggleTask}/>
+        :
+        <Ionicons name="checkmark-circle-outline" style={styles.iconFlagAndBack} onPress={handleToggleTask}/>
+        }
         </View>
         <View>
             {/* close */}
-        <Ionicons name="close-circle-outline" style={styles.iconCloseAndBack} onPress={handleDeleteTask}/>
+        <Ionicons name="close-circle-outline" style={styles.iconClose} onPress={handleDeleteTask}/>
         </View>
 
         
@@ -71,15 +74,12 @@ let taskView = (
 )
 
 let taskEdit = (
+        
     <>
 
         <View>
-            {/* fleg */}
-        <Ionicons name="checkmark-circle-outline" style={styles.iconFlag}/>
-        </View>
-        <View>
             {/* close */}
-        <Ionicons name="arrow-back-circle-outline" style={styles.iconCloseAndBack} onPress={() => setIsEditing(false)}/>
+        <Ionicons name="arrow-back-circle-outline" style={styles.iconFlagAndBack} onPress={() => setIsEditing(false)}/>
         </View>
 
         <TextInput 
@@ -130,18 +130,17 @@ const styles = StyleSheet.create ({
         backgroundColor: '#ebedf2cc',
        
     },
-    iconFlag: {
+    iconFlagAndBack: {
         fontSize: 30,
         color: '#bf8c6f',
         position: 'absolute',
         left: 0,
         right: 0,
-        // backgroundColor: 'yellow',
-        // width: 30,
-        // borderRadius: 50,
+     
+        
        
     },
-    iconCloseAndBack: {
+    iconClose: {
         fontSize: 30,
         color: '#bf8c6f',
         position: 'absolute',
