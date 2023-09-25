@@ -31,7 +31,7 @@ const styles = StyleSheet.create ({
     header: {
         width: '100%',
         // backgroundColor: 'red',
-        height: 150,
+        height: 160,
         display: 'flex', 
         alignItems: 'center',
         justifyContent: 'center', 

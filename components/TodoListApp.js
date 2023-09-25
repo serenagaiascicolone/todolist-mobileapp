@@ -55,9 +55,6 @@ const height = Dimensions.get('window').height;
         </View>
         <TasksContainer />
         </KeyboardAwareScrollView>
-        {/* <ScrollView > */}
-        {/* <Footer useCaveat={useCaveat}/> */}
-        {/* </ScrollView> */}
         </>
     )
 }
